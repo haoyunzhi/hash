@@ -1,0 +1,29 @@
+/*
+The Keccak sponge function, designed by Guido Bertoni, Joan Daemen,
+Michaël Peeters and Gilles Van Assche. For more information, feedback or
+questions, please refer to our website: http://keccak.noekeon.org/
+
+Implementation by the designers,
+hereby denoted as "the implementer".
+
+To the extent possible under law, the implementer has waived all copyright
+and related or neighboring rights to the source code in this file.
+http://creativecommons.org/publicdomain/zero/1.0/
+*/
+
+#if (Unrolling == 10)
+#define rounds \
+    round(A,0) \
+    round(A,1) \
+    round(A,2) \
+    round(A,3) \
+    round(A,4) \
+    round(A,5) \
+    round(A,6) \
+    round(A,7) \
+    round(A,8) \
+    round(A,9)\
+    copyToState(state, A)
+#else
+#error "Unrolling is not correctly specified!"
+#endif
